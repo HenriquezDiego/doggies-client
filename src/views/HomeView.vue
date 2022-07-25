@@ -2,7 +2,7 @@
    <div>
       <v-container>
          <v-row>
-            <v-col xm="12" sm="3" v-for="dog in dogs" :key="dog.id">
+            <v-col md="3" sm="6" v-for="dog in dogs" :key="dog.id">
                <DoggieCard :dog="dog" />
             </v-col>
          </v-row>

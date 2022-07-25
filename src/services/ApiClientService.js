@@ -13,6 +13,6 @@ const apiClient = axios.create({
 
 export default {
    getAll() {
-      return apiClient.get('images/search?limit=6&page=1&order=Rand')
+      return apiClient.get('images/search?limit=8&page=1&order=Rand')
    }
 }

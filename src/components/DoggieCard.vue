@@ -5,7 +5,7 @@
             :src="dog.url"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="200px"
+            height="325px"
          >
          </v-img>
          <v-card-title
@@ -30,7 +30,7 @@
                {{ temp }}
             </v-chip>
          </v-card-text>
-         <v-card-actions>
+         <v-card-actions id="action">
             <v-spacer></v-spacer>
 
             <v-btn icon>
@@ -49,4 +49,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+#action {
+   position: absolute;
+   bottom: 0px;
+   right: 0px;
+}
+</style>
