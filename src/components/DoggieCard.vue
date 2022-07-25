@@ -34,7 +34,7 @@
             <v-spacer></v-spacer>
 
             <v-btn icon>
-               <v-icon color="red darken-2">mdi-heart</v-icon>
+               <v-icon color="red darken-2">fa-solid fa-heart</v-icon>
             </v-btn>
          </v-card-actions>
       </div>

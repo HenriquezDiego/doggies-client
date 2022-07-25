@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="main">
       <v-container>
          <v-row>
             <v-col md="3" sm="6" v-for="dog in dogs" :key="dog.id">
@@ -31,3 +31,9 @@ export default {
    }
 }
 </script>
+
+<style scoped>
+.main {
+   margin-top: 3%;
+}
+</style>
