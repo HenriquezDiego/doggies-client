@@ -33,7 +33,7 @@
          <v-card-actions id="action">
             <v-spacer></v-spacer>
 
-            <v-btn icon>
+            <v-btn icon @click="addFavourite(dog.id)">
                <v-icon color="red darken-2">fa-solid fa-heart</v-icon>
             </v-btn>
          </v-card-actions>
@@ -42,9 +42,21 @@
 </template>
 
 <script>
+import ApiClientService from '@/services/ApiClientService.js'
 export default {
    props: {
       dog: Object
+   },
+   methods: {
+      addFavourite(id) {
+         ApiClientService.postFavorite(id)
+            .then((res) =>
+               res.status === 200
+                  ? console.log('Success')
+                  : console.log('Bad request')
+            )
+            .catch((error) => console.log(error))
+      }
    }
 }
 </script>

@@ -14,5 +14,11 @@ const apiClient = axios.create({
 export default {
    getAll() {
       return apiClient.get('images/search?limit=8&page=1&order=Rand')
+   },
+   postFavorite(id) {
+      return apiClient.post('https://api.thedogapi.com/v1/favourites', {
+         image_id: id,
+         sub_id: 'TheOli'
+      })
    }
 }
