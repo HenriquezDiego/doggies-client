@@ -20,5 +20,8 @@ export default {
          image_id: id,
          sub_id: 'TheOli'
       })
+   },
+   getFavorites() {
+      return apiClient.get('https://api.thedogapi.com/v1/favourites')
    }
 }

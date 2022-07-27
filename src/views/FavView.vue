@@ -3,7 +3,7 @@
       <v-container>
          <v-row>
             <v-col md="3" sm="6" v-for="dog in dogs" :key="dog.id">
-               <DoggieCard :dog="dog" :isFav="true" />
+               <DoggieCard :dog="dog" :isFav="false" />
             </v-col>
          </v-row>
       </v-container>
@@ -18,22 +18,24 @@ export default {
    components: {
       DoggieCard
    },
-   name: 'Home',
    data() {
       return {
          dogs: []
       }
    },
    created() {
-      ApiClientServices.getAll().then((res) => {
-         this.dogs = res.data
+      ApiClientServices.getFavorites().then((res) => {
+         let data = []
+         data = res.data
+         this.dogs = data.map((d) => {
+            let url = d.image.url
+            return {
+               url,
+               breeds: []
+            }
+         })
+         console.log(this.dogs)
       })
    }
 }
 </script>
-
-<style scoped>
-.main {
-   margin-top: 3%;
-}
-</style>

@@ -32,9 +32,11 @@
          </v-card-text>
          <v-card-actions id="action">
             <v-spacer></v-spacer>
-
             <v-btn icon @click="addFavourite(dog.id)">
-               <v-icon color="red darken-2">fa-solid fa-heart</v-icon>
+               <v-icon v-if="isFav" color="red darken-2"
+                  >fa-solid fa-heart</v-icon
+               >
+               <v-icon v-else color="red darken-2">fas fa-heart-broken</v-icon>
             </v-btn>
          </v-card-actions>
       </div>
@@ -45,7 +47,8 @@
 import ApiClientService from '@/services/ApiClientService.js'
 export default {
    props: {
-      dog: Object
+      dog: Object,
+      isFav: Boolean
    },
    methods: {
       addFavourite(id) {
