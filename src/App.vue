@@ -1,11 +1,13 @@
 <template>
    <v-app>
       <v-app-bar app color="primary" dark>
-         <div id="to-home" class="d-flex align-center" @click="goToHome">
-            <v-icon size="45">fas fa-paw</v-icon>
-         </div>
-         <div>
-            <span class="text-h4 font-weight-bold ml-4">Doggies</span>
+         <div id="to-home" class="d-flex none-select" @click="goToHome">
+            <div class="d-flex align-center">
+               <v-icon size="45">fas fa-paw</v-icon>
+            </div>
+            <div>
+               <span class="text-h4 font-weight-bold ml-4">Doggies</span>
+            </div>
          </div>
          <v-spacer></v-spacer>
          <v-btn to="fav" text>
@@ -34,5 +36,10 @@ export default {
 <style scoped>
 #to-home {
    cursor: pointer;
+}
+.none-select {
+   -webkit-user-select: none; /* Safari */
+   -ms-user-select: none; /* IE 10 and IE 11 */
+   user-select: none; /* Standard syntax */
 }
 </style>

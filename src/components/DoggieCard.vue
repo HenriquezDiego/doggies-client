@@ -32,7 +32,7 @@
          </v-card-text>
          <v-card-actions id="action">
             <v-spacer></v-spacer>
-            <v-btn icon @click="addFavourite(dog.id)">
+            <v-btn icon @click="action(dog.id)">
                <v-icon color="red darken-2">{{ isFavIcon }}</v-icon>
             </v-btn>
          </v-card-actions>
@@ -61,6 +61,18 @@ export default {
                   : console.log('Bad request')
             )
             .catch((error) => console.log(error))
+      },
+      removeFavourite(id) {
+         ApiClientService.deleteFavorite(id)
+            .then((res) =>
+               res.status === 200
+                  ? console.log('Success')
+                  : console.log('Bad request')
+            )
+            .catch((error) => console.log(error))
+      },
+      action(id) {
+         this.isFav ? this.addFavourite(id) : this.removeFavourite(id)
       }
    }
 }

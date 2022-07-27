@@ -23,5 +23,8 @@ export default {
    },
    getFavorites() {
       return apiClient.get('https://api.thedogapi.com/v1/favourites')
+   },
+   deleteFavorite(id) {
+      return apiClient.delete(`https://api.thedogapi.com/v1/favourites/${id}`)
    }
 }

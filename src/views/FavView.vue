@@ -23,16 +23,13 @@ export default {
          dogs: []
       }
    },
+
    created() {
       ApiClientServices.getFavorites().then((res) => {
          let data = []
          data = res.data
          this.dogs = data.map((d) => {
-            let url = d.image.url
-            return {
-               url,
-               breeds: []
-            }
+            return { id: d.id, url: d.image.url, breeds: [] }
          })
          console.log(this.dogs)
       })
