@@ -15,7 +15,7 @@
          ></v-card-title>
          <v-card-text
             v-if="dog.breeds.length > 0"
-            class="text-subtitle-1 black--text"
+            class="text-subtitle-1 black--text mb-5"
          >
             <span class="font-weight-bold">Life span:</span>
             {{ dog.breeds[0].life_span }} <br />
@@ -33,10 +33,7 @@
          <v-card-actions id="action">
             <v-spacer></v-spacer>
             <v-btn icon @click="addFavourite(dog.id)">
-               <v-icon v-if="isFav" color="red darken-2"
-                  >fa-solid fa-heart</v-icon
-               >
-               <v-icon v-else color="red darken-2">fas fa-heart-broken</v-icon>
+               <v-icon color="red darken-2">{{ isFavIcon }}</v-icon>
             </v-btn>
          </v-card-actions>
       </div>
@@ -49,6 +46,11 @@ export default {
    props: {
       dog: Object,
       isFav: Boolean
+   },
+   computed: {
+      isFavIcon() {
+         return this.isFav ? 'fa-solid fa-heart' : 'fas fa-heart-broken'
+      }
    },
    methods: {
       addFavourite(id) {
@@ -69,5 +71,6 @@ export default {
    position: absolute;
    bottom: 0px;
    right: 0px;
+   margin-top: 10px;
 }
 </style>

@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .main {
    margin-top: 3%;
 }
