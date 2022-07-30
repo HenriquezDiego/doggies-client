@@ -19,12 +19,15 @@
       <v-main>
          <router-view />
       </v-main>
+      <NotificationContainer />
    </v-app>
 </template>
 
 <script>
+import NotificationContainer from '@/components/NotificationContainer.vue'
 export default {
    name: 'App',
+   components: { NotificationContainer },
    methods: {
       goToHome() {
          this.$router.push('/')

@@ -57,22 +57,34 @@ export default {
          ApiClientService.postFavorite(id)
             .then((res) =>
                res.status === 200
-                  ? console.log('Success')
+                  ? this.success('Added')
                   : console.log('Bad request')
             )
             .catch((error) => console.log(error))
       },
       removeFavourite(id) {
          ApiClientService.deleteFavorite(id)
-            .then((res) =>
-               res.status === 200
-                  ? console.log('Success')
-                  : console.log('Bad request')
-            )
+            .then((res) => {
+               if (res.status === 200) {
+                  this.success('Removed to favorites')
+                  location.reload()
+               } else {
+                  console.log('Bad request')
+               }
+            })
             .catch((error) => console.log(error))
       },
       action(id) {
          this.isFav ? this.addFavourite(id) : this.removeFavourite(id)
+      },
+      success(msg) {
+         const notification = {
+            type: 'success',
+            message: msg
+         }
+         this.$store.dispatch('notification/add', notification, {
+            root: true
+         })
       }
    }
 }
