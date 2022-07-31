@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as notification from '@/store/modules/notification.js'
+import * as doggies from '@/store/modules/doggies.js'
 
 Vue.use(Vuex)
 
@@ -9,5 +10,5 @@ export default new Vuex.Store({
    getters: {},
    mutations: {},
    actions: {},
-   modules: { notification }
+   modules: { doggies, notification }
 })

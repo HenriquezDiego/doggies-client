@@ -2,7 +2,7 @@
    <div class="main">
       <v-container>
          <v-row>
-            <v-col md="3" sm="6" v-for="dog in dogs" :key="dog.id">
+            <v-col md="3" sm="6" v-for="dog in doggies" :key="dog.id">
                <DoggieCard :dog="dog" :isFav="true" />
             </v-col>
          </v-row>
@@ -11,23 +11,17 @@
 </template>
 
 <script>
-import ApiClientServices from '@/services/ApiClientService.js'
 import DoggieCard from '@/components/DoggieCard.vue'
-
+import { mapState, mapActions } from 'vuex'
 export default {
    components: {
       DoggieCard
    },
    name: 'Home',
-   data() {
-      return {
-         dogs: []
-      }
-   },
+   computed: mapState('doggies', ['doggies']),
+   methods: mapActions('doggies', ['getDoggies']),
    created() {
-      ApiClientServices.getAll().then((res) => {
-         this.dogs = res.data
-      })
+      this.getDoggies()
    }
 }
 </script>

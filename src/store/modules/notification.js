@@ -8,26 +8,32 @@ let nextId = 1
 export const mutations = {
    PUSH(state, notification) {
       state.notifications.push({ ...notification, id: nextId++ })
-      state.snackbar = true
    },
    REMOVE(state, notification) {
       state.notification = state.notifications.filter(
          (n) => n.id !== notification.id
       )
    },
-   CLOSE(state) {
-      state.snackbar = false
+   SET_SNACKBAR(state, value) {
+      state.snackbar = value
    }
 }
 
 export const actions = {
    add({ commit }, notification) {
       commit('PUSH', notification)
+      commit('SET_SNACKBAR', true)
    },
    remove({ commit }, notification) {
       commit('REMOVE', notification)
    },
-   snackbarClose({ commit }) {
-      commit('CLOSE')
+   setSnackbar({ commit }) {
+      commit('SET_SNACKBAR', false)
+   }
+}
+
+export const getters = {
+   snackbar: (state) => {
+      return state.snackbar
    }
 }
