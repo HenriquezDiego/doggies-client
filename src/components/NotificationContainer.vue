@@ -3,10 +3,12 @@
       <v-snackbar
          :right="true"
          :bottom="true"
-         v-model="snackbar"
+         :value.sync="snackbar"
          v-for="notification in notifications"
          :key="notification.Id"
-         style="margin: 1em 0 1em"
+         :style="{
+            margin: `${notification.id * 2}em 0 ${notification.id * 2}em`
+         }"
          color="primary"
       >
          {{ notification.message }}
@@ -30,27 +32,15 @@ import { mapState, mapActions } from 'vuex'
 export default {
    data() {
       return {
+         top: 1,
+         bottom: 1,
          timeout: null
       }
    },
    computed: {
-      snackbar: {
-         get() {
-            return this.snackbar
-         },
-         set(value) {
-            return this.$store.dispatch('notification', 'setSnackbar', value)
-         }
-      },
       ...mapState('notification', ['notifications', 'snackbar'])
    },
-   mounted() {
-      this.timeout = setTimeout(() => this.remove(this.notifications[0]), 5000)
-   },
-   methods: mapActions('notification', ['setSnackbar', 'remove']),
-   beforeDestroy() {
-      clearTimeout(this.timeout)
-   }
+   methods: mapActions('notification', ['setSnackbar', 'removeLastOne'])
 }
 </script>
 

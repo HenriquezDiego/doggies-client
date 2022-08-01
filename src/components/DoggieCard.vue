@@ -42,6 +42,7 @@
 
 <script>
 import ApiClientService from '@/services/ApiClientService.js'
+import { mapActions } from 'vuex'
 export default {
    props: {
       dog: Object,
@@ -66,8 +67,8 @@ export default {
          ApiClientService.deleteFavorite(id)
             .then((res) => {
                if (res.status === 200) {
+                  this.removeFav(id)
                   this.success('Removed to favorites')
-                  location.reload()
                } else {
                   console.log('Bad request')
                }
@@ -85,7 +86,8 @@ export default {
          this.$store.dispatch('notification/add', notification, {
             root: true
          })
-      }
+      },
+      ...mapActions('doggies', ['removeFav'])
    }
 }
 </script>
