@@ -4,13 +4,13 @@ export const state = {
    snackbar: false
 }
 
-let nextId = 1
+let nextId = 0
 export const mutations = {
    PUSH(state, notification) {
       state.notifications.push({ ...notification, id: nextId++ })
    },
    REMOVE(state, notification) {
-      state.notification = state.notifications.filter(
+      state.notifications = state.notifications.filter(
          (n) => n.id !== notification.id
       )
    },
@@ -24,6 +24,7 @@ export const mutations = {
 
 export const actions = {
    add({ commit }, notification) {
+      if (nextId >= 6) nextId = 0
       commit('PUSH', notification)
       commit('SET_SNACKBAR', true)
    },
