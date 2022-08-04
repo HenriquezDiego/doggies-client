@@ -20,8 +20,9 @@ export const mutations = {
 }
 
 export const actions = {
-   add({ commit }, notification) {
-      if (nextId >= 6) nextId = 0
+   add({ getters, commit }, notification) {
+      console.log(getters.getNotificationsCount)
+      if (nextId >= 6 || getters.getNotificationsCount === 0) nextId = 0
       commit('PUSH', notification)
       commit('SET_SNACKBAR', true)
    },
@@ -30,5 +31,11 @@ export const actions = {
    },
    setSnackbar({ commit }) {
       commit('SET_SNACKBAR', false)
+   }
+}
+
+export const getters = {
+   getNotificationsCount(state) {
+      return state.notifications.length
    }
 }
