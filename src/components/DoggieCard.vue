@@ -9,6 +9,7 @@
          >
          </v-img>
          <v-card-title
+            v-if="isFav"
             v-text="
                dog.breeds.length > 0 ? dog.breeds[0].name : 'Unknown breed'
             "
@@ -58,7 +59,7 @@ export default {
          ApiClientService.postFavorite(id)
             .then((res) =>
                res.status === 200
-                  ? this.success('Added')
+                  ? this.success('Added to favorites')
                   : console.log('Bad request')
             )
             .catch((error) => console.log(error))
